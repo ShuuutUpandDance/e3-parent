@@ -30,7 +30,7 @@ public class ContentServiceImpl implements ContentService {
         TbContentExample example = new TbContentExample();
         TbContentExample.Criteria criteria = example.createCriteria();
         criteria.andCategoryIdEqualTo(categoryId);
-        List<TbContent> contentList = contentMapper.selectByExample(example);
+        List<TbContent> contentList = contentMapper.selectByExampleWithBLOBs(example);
         //取分页结果
         EasyUIDataGridResult result = new EasyUIDataGridResult();
         result.setRows(contentList);
@@ -47,5 +47,18 @@ public class ContentServiceImpl implements ContentService {
         //插入
         contentMapper.insert(content);
         return E3Result.ok();
+    }
+
+    /**
+     * 根据内容分类id查询内容列表
+     * @param cid  内容分类id
+     * @return
+     */
+    @Override
+    public List<TbContent> getContentListByCid(long cid) {
+        TbContentExample example = new TbContentExample();
+        TbContentExample.Criteria criteria = example.createCriteria();
+        criteria.andCategoryIdEqualTo(cid);
+        return contentMapper.selectByExampleWithBLOBs(example);
     }
 }
