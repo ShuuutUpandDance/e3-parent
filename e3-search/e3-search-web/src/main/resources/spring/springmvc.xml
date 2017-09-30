@@ -24,6 +24,9 @@
     <!--解决静态资源无法加载问题-->
     <mvc:default-servlet-handler/>
 
+    <!--全局异常处理器-->
+    <bean class="com.e3mall.search.exception.GlobalExceptionResolver"/>
+
     <!-- 引用dubbo服务 -->
     <dubbo:application name="e3-search-web"/>
     <dubbo:registry protocol="zookeeper" address="47.95.118.3:2181"/>
