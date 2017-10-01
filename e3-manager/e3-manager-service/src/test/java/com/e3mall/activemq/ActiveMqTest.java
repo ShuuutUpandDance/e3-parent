@@ -47,7 +47,7 @@ public class ActiveMqTest {
         connection.start();
 
         Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
-        Queue queue = session.createQueue("test-queue");
+        Queue queue = session.createQueue("spring-queue");
 
         MessageConsumer consumer = session.createConsumer(queue);
         consumer.setMessageListener(new MessageListener() {
